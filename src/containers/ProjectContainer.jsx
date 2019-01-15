@@ -1,25 +1,26 @@
 import React, { PureComponent, Fragment } from 'react';
 
-import Organization from 'components/Organization';
+import Project from 'components/Project';
 
-export default class OrganizationContainer extends PureComponent {
+export default class ProjectContainer extends PureComponent {
     
     constructor(props) {
         super(props);
 
         this.state = {
             loading: true,
-            organizations: []
+            project: {}
         };
     }
 
-    componentDidMount() {
-        fetch('http://dev.service.lookatmenu.com/search/search?language=russian&searchText=l')
+    loadProjectInfo() {
+        const { match } = this.props;
+        fetch(`https://jsonplaceholder.typicode.com/posts/${match.params.id}`)
             .then(response => response.json())
-            .then(organizations => {
+            .then(project => {
                 this.setState({
                     loading: false,
-                    organizations
+                    project
                 })
             })
             .catch(() => {
@@ -27,13 +28,17 @@ export default class OrganizationContainer extends PureComponent {
             })
     }
 
+    componentDidMount() {
+        this.loadProjectInfo();
+    }
+
     render() {
-        const { loading, organizations } = this.state;
+        const { loading, project } = this.state;
 
         return (
             <Fragment>
                 <div>
-                    {loading ? <div>Loading...</div> : <Organization data={organizations} />}
+                    {loading ? <div>Идёт загрузка...</div> : <Project project={project} />}
                 </div>
             </Fragment>
         );

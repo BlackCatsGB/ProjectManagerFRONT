@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 
 import './posts.sass';
 
@@ -11,7 +12,7 @@ export default class PostList extends PureComponent {
                 <ul>
                     {posts.map(post =>
                         <li key={post.id}>
-                            <h1>{post.title}</h1>
+                            <h1><Link to={`/projects/${post.id}`}>{post.title}</Link></h1>
                         </li>
                     )}
                 </ul>
