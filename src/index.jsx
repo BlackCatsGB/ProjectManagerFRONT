@@ -1,24 +1,24 @@
-import React, {Component, Fragment} from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import ReactDom from 'react-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './style.sass';
 
-import Header from 'components/Header';
-import Footer from "components/Footer";
-import UserList from 'containers/UserListContainer';
-import PostList from 'containers/PostListContainer';
-import Organization from 'containers/OrganizationContainer';
+import Navigation from 'components/Navigation/Navigation.jsx';
 
-class App extends Component {
+import routes from './routes';
+
+class App extends PureComponent {
     render() {
-        return(
-            <Fragment>
-                <Header />
-                <UserList />
-                <PostList />
-                <Organization />
-                <Footer />
-            </Fragment>
+        return (
+            <BrowserRouter>
+                <Fragment>
+                    <Navigation />
+                    <Switch>
+                        {routes.map((page, id) => <Route key={id} {...page} />)}
+                    </Switch>
+                </Fragment>
+            </BrowserRouter>
         );
     }
 }
