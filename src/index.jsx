@@ -7,16 +7,24 @@ import './style.sass';
 import Navigation from 'components/Navigation/Navigation.jsx';
 
 import routes from './routes';
+import Filters from './components/Filters/Filters';
 
 class App extends PureComponent {
     render() {
         return (
             <BrowserRouter>
                 <Fragment>
-                    <Navigation />
-                    <Switch>
-                        {routes.map((page, id) => <Route key={id} {...page} />)}
-                    </Switch>
+                    <div className='left_col'>
+                        <Filters />
+                    </div>
+                    <div className="content">
+                        <Navigation />
+                        <Switch>
+                            {routes.map((page, id) => <Route key={id} {...page} />)}
+                        </Switch>
+                    </div>
+                    <div className='rigth_col'>
+                    </div>
                 </Fragment>
             </BrowserRouter>
         );

@@ -1,8 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 
-import './posts.sass';
-
 export default class PostList extends PureComponent {
     render() {
         const { posts, onLoadMorePublications } = this.props;
@@ -16,7 +14,7 @@ export default class PostList extends PureComponent {
                         </li>
                     )}
                 </ul>
-                <button className="white_button" onClick={onLoadMorePublications}>Больше публикаций</button>
+                <button className="btn btn-secondary" onClick={onLoadMorePublications}>Больше публикаций</button>
             </div>
         );
     }

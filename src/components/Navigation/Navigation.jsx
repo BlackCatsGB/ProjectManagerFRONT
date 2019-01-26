@@ -1,8 +1,6 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import classNames from 'classnames';
-
-import './Navigation.sass';
 
 class Navigation extends PureComponent {
     render() {
@@ -10,15 +8,18 @@ class Navigation extends PureComponent {
         const { location } = this.props;
 
         return (
-            <ul className="navi">
-                <li className={classNames({ active: location.pathname === '/projects' })}>
-                    <Link className='nav-link' to="/projects">Проекты (тест)</Link>
+            <ul className="nav nav-tabs" id="myTab" role="tablist" >
+                <li className='nav-item'>
+                    <Link className={classNames('nav-item', { active: location.pathname === '/projects' })} id="home-tab" data-toggle="tab" to="/projects" role="tab" aria-controls="home" aria-selected="true">Источники</Link>
                 </li>
-                <li className={classNames({ active: location.pathname === '/users' })}>
-                    <Link className='nav-link' to="/users">Пользователи (тест)</Link>
+                <li className={classNames('nav-item', { active: location.pathname === '/users' })}>
+                    <Link to="/users" className="nav-link">Список</Link>
                 </li>
-                <li className={classNames({ active: location.pathname === '/organization' })}>
-                    <Link className='nav-link' to="/organization">Организация (тест)</Link>
+                <li className={classNames('nav-item', { active: location.pathname === '/organization' })}>
+                    <Link to="/organization" className="nav-link">Версии</Link>
+                </li>
+                <li className={classNames('nav-item', { active: location.pathname === '/labels' })}>
+                    <Link to="/labels" className="nav-link">Метки</Link>
                 </li>
             </ul>
         );

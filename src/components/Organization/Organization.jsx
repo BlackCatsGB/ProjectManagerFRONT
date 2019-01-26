@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 
-import './Organization.sass';
+//import './Organization.sass';
 
 export default class Organization extends PureComponent {
     render() {

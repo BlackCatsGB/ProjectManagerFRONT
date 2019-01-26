@@ -1,7 +1,5 @@
 import React, { PureComponent } from 'react';
 
-import './users.sass';
-
 export default class UserList extends PureComponent {
     render() {
         const { users } = this.props;
